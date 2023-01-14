@@ -9,9 +9,15 @@
  * 3ка есть только в 1ом массиве, 4ка только во 2ом. Возвращаем массив [3, 4]
  *
  * ([1, 3, 3, 4], [1, 3, '4'])) -> возвращаем [4, '4'],
- * так как одно значение - чисто, второе - строка.
+ * так как одно значение - число, второе - строка.
  * Значения 1, 3 - есть и в 1ом и во 2ом массиве. Их выбрасываем.
  *
  * console.log(arrayDiff([1, 2, 3], [1, 2, 4])); -> [3, 4]
  * console.log(arrayDiff([1, 3, 3, 4], [1, 3, '4'])); -> [4, '4']
  */
+// eslint-disable-next-line import/prefer-default-export
+export const arrayDiff = (arr1, arr2) => {
+  const newArr1 = arr1.filter(item => !arr2.includes(item));
+  const newArr2 = arr2.filter(item => !arr1.includes(item));
+  return [...newArr1, ...newArr2];
+};

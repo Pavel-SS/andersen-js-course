@@ -11,3 +11,12 @@
  *
  * forEachRight([1, 2, 3, 4], val => console.log(val)); -> в консоль 4 3 2 1
  */
+
+// eslint-disable-next-line consistent-return, import/prefer-default-export
+export const forEachRight = (arr, callback) => {
+  // eslint-disable-next-line no-plusplus
+  for (let i = arr.length; i >= 0; --i) {
+    // eslint-disable-next-line no-unused-expressions
+    arr[i] ? callback(arr[i]) : undefined;
+  }
+};

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * При запуске приложения через yarn start,
  * этот файл будет исполняться автоматически при его редактировании
@@ -28,10 +29,22 @@ import { task9Old, task9New } from './es-features/task9';
 import { task10Old, task10New } from './es-features/task10';
 import { task11Old, task11New } from './es-features/task11';
 // import { task12Old, task12New } from './es-features/task12';
-// import { task13Old, task13New } from './es-features/task13';
-// import { task14Old, task14New } from './es-features/task14';
-// import { task15Old, task15New } from './es-features/task15';
+import { task13Old, task13New } from './es-features/task13';
+import { task14Old, task14New } from './es-features/task14';
+import { task15Old, task15New } from './es-features/task15';
 
+// array-practic
+import { any } from './array-practice/task1';
+import { arrayDiff } from './array-practice/task2';
+import { forEachRight } from './array-practice/task3';
+import { union } from './array-practice/task4';
+import { createGenerator } from './array-practice/task5';
+import { transformArrayToNumber } from './array-practice/task6';
+import { take } from './array-practice/task7';
+import { without } from './array-practice/task8';
+import { indexOfAll } from './array-practice/task9';
+import { membersOnActiveMeetups } from './array-practice/task10';
+// /////////////////////////////////////
 console.log('task1 old', task1Old(10) === 500); // true
 console.log('task1 new', task1New(10) === 500); // true
 
@@ -87,22 +100,78 @@ console.log('task11 new', task11New({ a: null }, 'a')); // false
 
 // console.log('=============');
 
-// console.log('task12 old', task12Old({ obj2: { some: true }}, 'obj2', 'some2' )); // undefined
-// console.log('task12 new', task12New({ obj2: { some: true }}, 'obj2', 'some2' )); // undefined
+// console.log('task12 old', task12Old({ obj2: { some: true } }, 'obj2', 'some2')); // undefined
+// console.log('task12 new', task12New({ obj2: { some: true } }, 'obj2', 'some2')); // undefined
 
 // console.log('=============');
 
-// console.log('task13 old', task13Old([1, 2, 3, [4, 5]])); // [1, 2, 3, 4, 5]
-// console.log('task13 new', task13New([1, 2, 3, [4, 5]])); // [1, 2, 3, 4, 5]
+console.log('task13 old', task13Old([1, 2, 3, [4, 5]])); // [1, 2, 3, 4, 5]
+console.log('task13 new', task13New([1, 2, 3, [4, 5]])); // [1, 2, 3, 4, 5]
 
 // console.log('=============');
 
-// console.log('task14 old', task14Old({ a: 10, b: 55, c: 3 })); // [["a", 10], ["b", 55], ["c", 3]]
-// console.log('task14 new', task14New({ a: 10, b: 55, c: 3 })); // [["a", 10], ["b", 55], ["c", 3]]
+console.log('task14 old', task14Old({ a: 10, b: 55, c: 3 })); // [["a", 10], ["b", 55], ["c", 3]]
+console.log('task14 new', task14New({ a: 10, b: 55, c: 3 })); // [["a", 10], ["b", 55], ["c", 3]]
 
 // console.log('=============');
 
-// console.log('task15 old', task15Old([['a', 1], ['b', 2]])); // {a: 1, b: 2}
-// console.log('task15 new', task15New([['a', 1], ['b', 2]])); // {a: 1, b: 2}
+console.log('task15 old', task15Old([['a', 1], ['b', 2]])); // {a: 1, b: 2}
+console.log('task15 new', task15New([['a', 1], ['b', 2]])); // {a: 1, b: 2}
 
 // console.log('=============');
+
+// array-practic
+console.log('array-practic');
+
+console.log('task1');
+console.log(any([0, 1, 2, 0], x => x >= 2)); // true
+console.log(any([0, 0, 1, 0])); // true
+console.log(any([0, 0, 0, 0])); // false
+
+console.log('task2');
+console.log(arrayDiff([1, 2, 3], [1, 2, 4])); // [3, 4]
+console.log(arrayDiff([1, 3, 3, 4], [1, 3, '4'])); // [4, '4']
+
+console.log('task3');
+forEachRight([1, 2, 3, 4], val => console.log(val)); // в консоль 4 3 2 1
+
+console.log('task4');
+console.log(union([5, 1, 2, 3, 3], [4, 3, 2])); // [5, 1, 2, 3, 4]
+console.log(union([5, 1, 3, 3, 4], [1, 3, 4])); // [5, 1, 3, 4]
+
+console.log('task5');
+const generator = createGenerator([1, '6', 3, 2]);
+console.log(generator.next()); // 1
+console.log(generator.next()); // '6'
+console.log(generator.next()); // 3
+console.log(generator.next()); // 2
+console.log(generator.next()); // 'Complete!'
+console.log(generator.next()); // 'Complete!'
+
+console.log('task6');
+console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc + item)); // 60
+console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc + item, 10)); // 70
+console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc * item)); // 0
+console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc * item, 1)); // 6000
+console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc - item)); // -60
+
+console.log('task7');
+console.log(take([1, 2, 3], 5)); // [1, 2, 3]
+console.log(take([1, 2, 3], 2)); // [1, 2]
+
+console.log('task8');
+console.log(without([2, 1, 2, 3], 1, 2)); // [3]
+console.log(without([2, 1, 10, 20], 1, 2)); // [10, 20]
+
+console.log('task9');
+console.log(indexOfAll([1, 2, 3, 1, 2, 3], 1)); // [0, 3]
+console.log(indexOfAll([1, 2, 3], 4)); // []
+
+console.log('task10');
+const meetups = [
+  { name: 'JavaScript', isActive: true, members: 100 },
+  { name: 'Angular', isActive: true, members: 900 },
+  { name: 'Node', isActive: false, members: 600 },
+  { name: 'React', isActive: true, members: 500 },
+];
+console.log(membersOnActiveMeetups(meetups)); // 1500
