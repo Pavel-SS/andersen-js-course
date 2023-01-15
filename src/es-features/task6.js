@@ -29,14 +29,12 @@ export function task6Old() {
 // При желании, можете использовать стрелочную функцию, вместо обычной
 
 export const task6New = () => {
-  const userModule = () => {
-    return {
-      name: 'Max',
-      value: 100,
-      role: { name: 'Admin' },
-      cases: [{ id: '1' }],
-    };
-  };
+  const userModule = () => ({
+    name: 'Max',
+    value: 100,
+    role: { name: 'Admin' },
+    cases: [{ id: '1' }],
+  });
   const {
     name,
     value,

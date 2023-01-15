@@ -17,10 +17,8 @@
  */
 
 // eslint-disable-next-line import/prefer-default-export
-export const createGenerator = arr => {
-  return {
-    next() {
-      return arr.length ? arr.shift() : 'Complite';
-    },
-  };
-};
+export const createGenerator = (arr) => ({
+  next() {
+    return arr.length ? arr.shift() : 'Complite';
+  },
+});

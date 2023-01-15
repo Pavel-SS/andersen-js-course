@@ -1,4 +1,4 @@
-﻿﻿/**
+/**
  * Функция принимает
  * 1 параметр - объект.
  * 2 параметр - ключ-строка, которая будет свойством на первом уровне этого объекта.
@@ -11,6 +11,7 @@
  * console.log(task12Old({ obj3: { some: true }}, 'obj2', 'some' )); -> undefined
  */
 
+// eslint-disable-next-line import/prefer-default-export
 export function task12Old(object, firstFieldName, secondFieldName) {
   return object[firstFieldName] && object[firstFieldName][secondFieldName];
 }

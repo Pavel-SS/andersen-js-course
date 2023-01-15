@@ -15,6 +15,4 @@
  * console.log(any([0, 0, 0, 0])); -> false
  */
 // eslint-disable-next-line import/prefer-default-export
-export const any = (arr, callback) => {
-  return arr.some(callback === 'undefined' ? callback : n => n);
-};
+export const any = (arr, callback) => arr.some(callback === 'undefined' ? callback : (n) => n);

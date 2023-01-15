@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import './styles/main.css';
 /**
  * При запуске приложения через yarn start,
  * этот файл будет исполняться автоматически при его редактировании
@@ -28,7 +29,7 @@ import { task8Old, task8New } from './es-features/task8';
 import { task9Old, task9New } from './es-features/task9';
 import { task10Old, task10New } from './es-features/task10';
 import { task11Old, task11New } from './es-features/task11';
-// import { task12Old, task12New } from './es-features/task12';
+import { task12Old, task12New } from './es-features/task12';
 import { task13Old, task13New } from './es-features/task13';
 import { task14Old, task14New } from './es-features/task14';
 import { task15Old, task15New } from './es-features/task15';
@@ -100,8 +101,8 @@ console.log('task11 new', task11New({ a: null }, 'a')); // false
 
 // console.log('=============');
 
-// console.log('task12 old', task12Old({ obj2: { some: true } }, 'obj2', 'some2')); // undefined
-// console.log('task12 new', task12New({ obj2: { some: true } }, 'obj2', 'some2')); // undefined
+console.log('task12 old', task12Old({ obj2: { some: true } }, 'obj2', 'some2')); // undefined
+console.log('task12 new', task12New({ obj2: { some: true } }, 'obj2', 'some2')); // undefined
 
 // console.log('=============');
 
@@ -115,8 +116,20 @@ console.log('task14 new', task14New({ a: 10, b: 55, c: 3 })); // [["a", 10], ["b
 
 // console.log('=============');
 
-console.log('task15 old', task15Old([['a', 1], ['b', 2]])); // {a: 1, b: 2}
-console.log('task15 new', task15New([['a', 1], ['b', 2]])); // {a: 1, b: 2}
+console.log(
+  'task15 old',
+  task15Old([
+    ['a', 1],
+    ['b', 2],
+  ])
+); // {a: 1, b: 2}
+console.log(
+  'task15 new',
+  task15New([
+    ['a', 1],
+    ['b', 2],
+  ])
+); // {a: 1, b: 2}
 
 // console.log('=============');
 
@@ -124,7 +137,7 @@ console.log('task15 new', task15New([['a', 1], ['b', 2]])); // {a: 1, b: 2}
 console.log('array-practic');
 
 console.log('task1');
-console.log(any([0, 1, 2, 0], x => x >= 2)); // true
+console.log(any([0, 1, 2, 0], (x) => x >= 2)); // true
 console.log(any([0, 0, 1, 0])); // true
 console.log(any([0, 0, 0, 0])); // false
 
@@ -133,7 +146,7 @@ console.log(arrayDiff([1, 2, 3], [1, 2, 4])); // [3, 4]
 console.log(arrayDiff([1, 3, 3, 4], [1, 3, '4'])); // [4, '4']
 
 console.log('task3');
-forEachRight([1, 2, 3, 4], val => console.log(val)); // в консоль 4 3 2 1
+forEachRight([1, 2, 3, 4], (val) => console.log(val)); // в консоль 4 3 2 1
 
 console.log('task4');
 console.log(union([5, 1, 2, 3, 3], [4, 3, 2])); // [5, 1, 2, 3, 4]
