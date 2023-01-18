@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable max-classes-per-file */
 /**
  * Нужно переписать функции-конструкторы на классы
  */
@@ -6,7 +8,7 @@ function A(name) {
   this.name = name;
 }
 
-A.prototype.getName = function() {
+A.prototype.getName = function () {
   return this.name;
 };
 
@@ -18,23 +20,23 @@ function B(name, age) {
 B.prototype = Object.create(A.prototype);
 B.prototype.constructor = B;
 
-B.prototype.getName = function(text) {
+B.prototype.getName = function (text) {
   return A.prototype.getName.call(this) + ' ' + text;
 };
 
-B.prototype.getAge = function() {
+B.prototype.getAge = function () {
   return this.age;
 };
 
-B.defaultUser = function() {
+B.defaultUser = function () {
   return new B('test', 0);
 };
 
 Object.defineProperty(B.prototype, 'color', {
-  get: function() {
+  get: function () {
     return this._color;
   },
-  set: function(color) {
+  set: function (color) {
     this._color = color;
   },
 });
@@ -42,6 +44,7 @@ Object.defineProperty(B.prototype, 'color', {
 export function task10Old() {
   var b = new B('Max', 12);
   console.log(b.getName('Best')); // Max Best
+  // eslint-disable-next-line no-console
   console.log(b.getAge()); // 12
   console.log(B.defaultUser()); // {name: 'test', age: 0}
   b.color = 'red';
@@ -53,5 +56,45 @@ export function task10Old() {
 // Названия классов должны быть NewA и NewB
 // Изменить тело функции task10Old, написав task10New, где заиспользуете
 // класс так, как использовалась функция-конструктор B в task10Old
+class NewA {
+  constructor(name) {
+    this.name = name;
+  }
+}
+class NewB extends NewA {
+  constructor(name, age) {
+    super(name);
+    this.age = age;
+  }
 
-export function task10New() {}
+  getName(text) {
+    return `${this.name} ${text}`;
+  }
+
+  getAge() {
+    return this.age;
+  }
+
+  static defaultUser() {
+    return new NewB('text', 0);
+  }
+
+  getColor() {
+    return this._color;
+  }
+
+  setColor(value) {
+    this._color = value;
+  }
+}
+
+export const task10New = () => {
+  const b = new NewB('Max', 12);
+  console.log(b.getName('Best')); // Max Best
+  console.log(b.getAge()); // 12
+  console.log(NewB.defaultUser()); // {name: 'test', age: 0}
+  b.setColor('red');
+  // eslint-disable-next-line no-console
+  console.log(b.getColor()); // red
+  return b;
+};

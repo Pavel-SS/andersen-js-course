@@ -7,9 +7,7 @@
 
 export function task9Old() {
   var result = 'test'.indexOf('est') !== -1;
-  var findResult = [22, 1, 90, 70].filter(function(x) {
-    return x < 3;
-  })[0];
+  var findResult = [22, 1, 90, 70].filter((x) => x < 3)[0];
 
   return [result, findResult];
 }
@@ -17,4 +15,8 @@ export function task9Old() {
 // Напишите реализацию функции task9Old на ES6+ ниже этого комментария.
 // При желании, можете использовать стрелочную функцию, вместо обычной
 
-export function task9New() {}
+export const task9New = () => {
+  const result = 'test'.includes('est');
+  const findResult = [22, 1, 90, 70].find((x) => x < 3);
+  return [result, findResult];
+};

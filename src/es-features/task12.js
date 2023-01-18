@@ -1,4 +1,4 @@
-﻿﻿/**
+/**
  * Функция принимает
  * 1 параметр - объект.
  * 2 параметр - ключ-строка, которая будет свойством на первом уровне этого объекта.
@@ -11,6 +11,7 @@
  * console.log(task12Old({ obj3: { some: true }}, 'obj2', 'some' )); -> undefined
  */
 
+// eslint-disable-next-line import/prefer-default-export
 export function task12Old(object, firstFieldName, secondFieldName) {
   return object[firstFieldName] && object[firstFieldName][secondFieldName];
 }
@@ -18,4 +19,5 @@ export function task12Old(object, firstFieldName, secondFieldName) {
 // Напишите реализацию функции task2Old на ESnext ниже этого комментария.
 // При желании, можете использовать стрелочную функцию, вместо обычной
 
-export function task12New() {}
+export const task12New = (object, firstFieldName, secondFieldName) =>
+  object[firstFieldName]?.[secondFieldName];
